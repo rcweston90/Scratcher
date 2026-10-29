@@ -1,0 +1,244 @@
+:root {
+  --bg: #fafafa;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --icon: #6e6e73;
+  --icon-hover: #1d1d1f;
+  --hover: rgba(0, 0, 0, 0.055);
+  --pressed: rgba(0, 0, 0, 0.09);
+  --line: rgba(0, 0, 0, 0.07);
+  --accent: #2f6bff;
+  --selection: rgba(47, 107, 255, 0.18);
+  --drop: rgba(47, 107, 255, 0.05);
+  --toast-bg: #1d1d1f;
+  --toast-text: #fafafa;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e20;
+    --text: #ececee;
+    --muted: #98989f;
+    --icon: #98989f;
+    --icon-hover: #ececee;
+    --hover: rgba(255, 255, 255, 0.07);
+    --pressed: rgba(255, 255, 255, 0.12);
+    --line: rgba(255, 255, 255, 0.08);
+    --accent: #7aa2ff;
+    --selection: rgba(122, 162, 255, 0.28);
+    --drop: rgba(122, 162, 255, 0.07);
+    --toast-bg: #ececee;
+    --toast-text: #1e1e20;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+/* ── Bar ── */
+
+#bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 44px;
+  padding: 0 8px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+#count {
+  min-width: 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tools {
+  display: flex;
+  gap: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--icon);
+}
+
+.icon:hover {
+  background: var(--hover);
+  color: var(--icon-hover);
+}
+
+.icon:active {
+  background: var(--pressed);
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon .when-on,
+.icon[aria-pressed="true"] .when-off {
+  display: none;
+}
+
+.icon[aria-pressed="true"] .when-on {
+  display: block;
+  fill: currentColor;
+  stroke: none;
+}
+
+.icon[aria-pressed="true"] {
+  color: var(--accent);
+}
+
+.icon:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ── Editor ── */
+
+main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+#editor {
+  flex: 1;
+  width: 100%;
+  padding: 16px 20px 40vh;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  overflow-wrap: break-word;
+  tab-size: 4;
+  caret-color: var(--accent);
+  scroll-padding-bottom: 48px;
+}
+
+#editor::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+/* Nothing flashes in before the saved text arrives. */
+body.loading #editor::placeholder {
+  color: transparent;
+}
+
+body.dragging #editor {
+  background: var(--drop);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+/* ── Toast ── */
+
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100% - 32px);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--toast-bg);
+  color: var(--toast-text);
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  animation: rise 160ms ease-out;
+}
+
+#toast[hidden] {
+  display: none;
+}
+
+#toastAction {
+  font-weight: 600;
+  padding: 2px 0;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #toast { animation: none; }
+}
+
+@media (forced-colors: active) {
+  .icon[aria-pressed="true"] { outline: 2px solid CanvasText; }
+  #toast { border: 1px solid CanvasText; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

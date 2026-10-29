@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Scratcher</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body class="loading">
+  <header id="bar">
+    <span id="count" aria-live="off"></span>
+    <div class="tools" role="toolbar" aria-label="Scratcher">
+      <button id="speakBtn" class="icon" type="button" aria-pressed="false" aria-keyshortcuts="Meta+Shift+L Control+Shift+L">
+        <svg class="when-off" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 8h2.5L10 5v10l-3.5-3H4z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15.2 5.3a6.5 6.5 0 0 1 0 9.4"/></svg>
+        <svg class="when-on" viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5"/></svg>
+      </button>
+      <button id="copyBtn" class="icon" type="button" aria-keyshortcuts="Meta+Shift+Enter Control+Shift+Enter">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9" height="9" rx="2"/><path d="M13 7V5.5A1.5 1.5 0 0 0 11.5 4h-6A1.5 1.5 0 0 0 4 5.5v6A1.5 1.5 0 0 0 5.5 13H7"/></svg>
+      </button>
+      <button id="clearBtn" class="icon" type="button" aria-keyshortcuts="Meta+Shift+Backspace Control+Shift+Backspace">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 9.1A1.5 1.5 0 0 0 8.2 16.5h3.6a1.5 1.5 0 0 0 1.5-1.4L14 6"/></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <h1 class="sr-only">Scratcher</h1>
+    <textarea id="editor" spellcheck="false" autocomplete="off" autocapitalize="off"
+              aria-label="Text" aria-describedby="hint"
+              placeholder="Paste or drop text here"></textarea>
+    <p id="hint" class="sr-only">Plain text pad. Saves automatically.</p>
+    <p id="live" class="sr-only" role="status" aria-live="polite"></p>
+    <div id="toast" hidden>
+      <span id="toastText"></span>
+      <button id="toastAction" type="button" hidden></button>
+    </div>
+  </main>
+  <script src="panel.js"></script>
+</body>
+</html>
