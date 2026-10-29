@@ -43,7 +43,7 @@ To update, pull the latest and click the reload arrow on Scratcher's card.
 
 ## Privacy
 
-Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is stored locally in the browser and never synced or sent anywhere.
+Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is stored locally in the browser and never synced or sent anywhere. Full [privacy policy](PRIVACY.md).
 
 ## Credit
 
