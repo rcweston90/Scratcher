@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scratcher privacy policy</title>
+<meta name="description" content="Privacy policy for Scratcher, a plain text pad in the browser's side panel.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Scratcher privacy policy</h1>
+<p class="updated">Last updated: November 1, 2026</p>
+
+<p>Scratcher is a Chrome extension that gives you plain text pads in your browser's side panel. This policy explains what Scratcher does with your information.</p>
+
+<h2>What Scratcher stores</h2>
+<ul>
+<li><strong>The text in your pads</strong>, which you type, paste, drop in, or send from a page with the right-click menu, and the names you give your pads.</li>
+<li><strong>Where you left off</strong>, such as which pad is open, the scroll position and the cursor, so the panel reopens in the same place.</li>
+</ul>
+<p>This is saved in your browser's extension storage on your computer (<code>chrome.storage.local</code>).</p>
+
+<h2>Sync between your computers</h2>
+<p>From version 0.6.0, Scratcher also saves your pads to your browser's own sync storage (<code>chrome.storage.sync</code>). If you're signed in to your browser with sync turned on, your browser syncs that storage to your account with the browser maker (for Chrome, your Google Account), and from there to your other computers where you're signed in.</p>
+<ul>
+<li>This sync is done entirely by your browser, under its own privacy policy. Scratcher doesn't run a server and never sends your text to the developer.</li>
+<li>If your browser isn't signed in, sync is off, or extension syncing is off in your browser's sync settings, your pads stay on this computer only. Some Chromium browsers don't offer sync at all.</li>
+<li>Chrome sync holds about 100 KB for all of Scratcher's pads. A pad that doesn't fit is marked "Not syncing" and stays on the computer where it was written.</li>
+</ul>
+
+<h2>What Scratcher doesn't do</h2>
+<ul>
+<li>It doesn't send your text or any other data to the developer or to any server. Scratcher itself makes no network requests.</li>
+<li>It can't read the pages you visit. It only gets text you choose to send it, by selecting text and choosing Send to Scratcher.</li>
+<li>It doesn't use analytics, ads, tracking or cookies.</li>
+<li>It doesn't sell, share or transfer your data to anyone, and doesn't use it for any purpose other than showing your pads to you.</li>
+</ul>
+
+<h2>Read aloud</h2>
+<p>Read aloud uses the speech voices your browser provides. Some browsers offer online voices that send the text being spoken to the browser maker's speech service. That's handled by your browser under its own privacy policy, not by Scratcher.</p>
+
+<h2>Copy and paste</h2>
+<p>Copy puts your text on the clipboard only when you click Copy or use its shortcut. Scratcher only sees what's on your clipboard when you paste into a pad.</p>
+
+<h2>Deleting your data</h2>
+<p>Click Clear to empty a pad, or close a pad to delete it. Closing a pad also removes it from sync and from your other computers. Removing Scratcher from your browser deletes what it stored on that computer, and your browser's sync settings let you clear synced extension data from your account.</p>
+
+<h2>Permissions</h2>
+<ul>
+<li><strong>Side panel</strong>: shows your pads beside the page you're on.</li>
+<li><strong>Storage</strong>: saves your pads on your computer and in your browser's sync storage.</li>
+<li><strong>Context menus</strong>: adds Send to Scratcher to the right-click menu for selected text.</li>
+</ul>
+
+<h2>Changes to this policy</h2>
+<p>If Scratcher starts handling your data differently, this page will be updated and the date at the top will change.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy: open an issue at <a href="https://github.com/rcweston90/Scratcher/issues">github.com/rcweston90/Scratcher/issues</a>.</p>
+</main>
+</body>
+</html>
