@@ -1,10 +1,19 @@
 // Scratcher service worker: opens the side panel from the toolbar, the
-// shortcut and the right-click menu. Kept tiny so it starts fast.
+// shortcut and the right-click menu, and keeps pads in step with Chrome sync.
+
+importScripts('sync.js');
 
 const INBOX_KEY = 'inbox';
 const MENU_ID = 'send-to-scratcher';
 
 chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(console.error);
+
+// Sync: the panel only touches local storage; this mirrors it to
+// chrome.storage.sync, which the browser syncs to the user's other computers.
+const syncEngine = ScratcherSync.createEngine({ local: chrome.storage.local, sync: chrome.storage.sync });
+chrome.storage.onChanged.addListener((changes, area) => syncEngine.onChanged(changes, area));
+chrome.runtime.onStartup.addListener(() => syncEngine.schedule(1000));
+syncEngine.schedule(1500); // catch up on anything missed while asleep
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.removeAll();
