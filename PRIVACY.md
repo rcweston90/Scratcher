@@ -2,6 +2,8 @@
 
 Last updated: November 1, 2026
 
+This policy is also published as a web page at https://rcweston90.github.io/Scratcher/privacy.html. The two say the same thing.
+
 Scratcher is a text pad that lives in your browser's side panel. This page explains what it does with your information.
 
 ## What Scratcher stores
@@ -13,7 +15,7 @@ Everything is saved in your browser's extension storage on your computer (`chrom
 
 ## Sync between your computers
 
-Scratcher also saves your pads to your browser's own sync storage (`chrome.storage.sync`). If you're signed in to your browser with sync turned on, your browser syncs that storage to your account with the browser maker (for Chrome, your Google Account), and from there to the other computers where you're signed in. That's how your pads show up on your other computers.
+From version 0.6.0, Scratcher also saves your pads to your browser's own sync storage (`chrome.storage.sync`). If you're signed in to your browser with sync turned on, your browser syncs that storage to your account with the browser maker (for Chrome, your Google Account), and from there to the other computers where you're signed in. That's how your pads show up on your other computers.
 
 - This sync is done entirely by your browser, under its own privacy policy. Scratcher doesn't run a server and never sends your text to the developer.
 - If your browser isn't signed in, sync is turned off, or extension syncing is turned off in your browser's sync settings, your pads stay on this computer only. Some Chromium browsers don't offer sync at all.
@@ -24,7 +26,7 @@ Scratcher also saves your pads to your browser's own sync storage (`chrome.stora
 - It doesn't send your text or any other data to the developer or to any server. Scratcher itself makes no network requests.
 - It can't read the pages you visit. It only gets text you choose to send it, by selecting text and choosing Send to Scratcher.
 - It doesn't use analytics, ads, tracking or cookies.
-- It doesn't sell, share or transfer your data to anyone.
+- It doesn't sell, share or transfer your data to anyone, and doesn't use it for any purpose other than showing your pads to you.
 
 ## Read aloud
 
@@ -43,6 +45,10 @@ Click Clear to empty a pad, or close a pad to delete it. Closing a pad also remo
 - **Side panel**: shows the pads beside the page you're on.
 - **Storage**: saves your pads on your computer and in your browser's sync storage.
 - **Context menus**: adds Send to Scratcher to the right-click menu for selected text.
+
+## Changes to this policy
+
+If Scratcher starts handling your data differently, this page will be updated and the date at the top will change.
 
 ## Contact
 

@@ -56,7 +56,7 @@ Scratcher saves pads in the browser's extension sync storage (`chrome.storage.sy
 
 ## Privacy
 
-Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is kept in the browser and synced only by the browser's own sync. Scratcher makes no network requests. Full [privacy policy](PRIVACY.md).
+Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is kept in the browser and synced only by the browser's own sync. Scratcher makes no network requests. Full [privacy policy](https://rcweston90.github.io/Scratcher/privacy.html) (source in [PRIVACY.md](PRIVACY.md); the page is served by GitHub Pages from the `gh-pages` branch, so update both together).
 
 ## Tests
 
