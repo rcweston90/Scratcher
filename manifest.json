@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Scratcher",
-  "version": "0.5.1",
-  "description": "A plain text pad in the side panel. Paste, drop or send text to it, copy it or hear it read aloud. Saves on this device.",
+  "version": "0.6.0",
+  "description": "Plain text pads in the side panel. Paste, drop or send text in, copy it or hear it read aloud. Syncs with your browser.",
   "homepage_url": "https://github.com/rcweston90/scratcher",
   "minimum_chrome_version": "116",
   "permissions": ["sidePanel", "storage", "contextMenus"],

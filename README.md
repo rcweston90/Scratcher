@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-A plain text pad that slides out in your browser's side panel, next to whatever page you're on. Made for [Dia](https://www.diabrowser.com), and works in Chrome and other Chromium browsers too.
+Plain text pads that slide out in your browser's side panel, next to whatever page you're on. Made for [Dia](https://www.diabrowser.com), and works in Chrome and other Chromium browsers too.
 
 ![Scratcher demo](docs/scratcher-demo.gif)
 
@@ -14,11 +14,13 @@ A plain text pad that slides out in your browser's side panel, next to whatever 
 ## What it does
 
 - **Opens beside the page.** Click the toolbar button, or press ⌥⇧D (Alt+Shift+D) to open and close it
-- **Takes text from anywhere.** Type, paste, or drag text and text files in. Or select text on any page, right-click and choose Send to Scratcher
+- **Keeps several pads.** Click + for a new pad, double-click a tab to rename it, × to close it (with Undo). Unnamed pads take their name from the first line
+- **Follows you between computers.** Pads sync through your browser's own sync, so they show up wherever you're signed in
+- **Takes text from anywhere.** Type, paste, or drag text and text files in. Or select text on any page, right-click and choose Send to Scratcher, and it lands in the open pad
 - **Cleans up pastes.** Removes stray spaces, invisible characters and extra blank lines. ⌘⇧V pastes exactly as copied
 - **Counts as you go.** Words and characters, including what you've selected
 - **Reads aloud.** Reads the selection, or everything if nothing is selected
-- **Saves as you type.** Reopens right where you left off. Nothing leaves your computer
+- **Saves as you type.** Reopens right where you left off, in the pad you had open
 
 ## Shortcuts
 
@@ -29,6 +31,8 @@ A plain text pad that slides out in your browser's side panel, next to whatever 
 | Copy all (or the selection) | ⌘⇧↩ | Ctrl+Shift+Enter |
 | Clear (with Undo) | ⌘⇧⌫ | Ctrl+Shift+Backspace |
 | Paste without cleanup | ⌘⇧V | Ctrl+Shift+V |
+| Next or previous pad (with a tab focused) | ← → | ← → |
+| Rename or close the focused tab | F2, Delete | F2, Delete |
 
 Change the open shortcut at `dia://extensions/shortcuts` (or `chrome://extensions/shortcuts`).
 
@@ -41,9 +45,26 @@ Change the open shortcut at `dia://extensions/shortcuts` (or `chrome://extension
 
 To update, pull the latest and click the reload arrow on Scratcher's card.
 
+## Sync
+
+Scratcher saves pads in the browser's extension sync storage (`chrome.storage.sync`). With the browser signed in and sync on, the browser carries them to your other computers. There's no Scratcher server.
+
+- Chrome sync gives an extension about 100 KB in all, so pads sync in tab order until that's used. A pad that doesn't fit shows **Not syncing** and stays on the computer where it was written; it syncs again once it's small enough.
+- If the same pad is edited on two computers before they catch up, nothing is lost: one version keeps the pad and the other becomes a "(copy)" pad.
+- Changes go out a couple of seconds after you stop typing, to stay inside Chrome's write limits.
+- Dia and other Chromium browsers may not sync extension storage. Scratcher works the same there; pads just stay on that computer.
+
 ## Privacy
 
-Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is stored locally in the browser and never synced or sent anywhere. Full [privacy policy](PRIVACY.md).
+Permissions are side panel, storage and the right-click menu. Scratcher can't read the pages you visit; it only gets text you send to it. Your text is kept in the browser and synced only by the browser's own sync. Scratcher makes no network requests. Full [privacy policy](PRIVACY.md).
+
+## Tests
+
+```
+node --test test/*.test.js
+```
+
+The sync tests run two and three simulated computers against Chrome sync's quotas, including offline edits.
 
 ## Credit
 
